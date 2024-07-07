@@ -1,7 +1,10 @@
-import 'package:datapage_bloc/bloc/product_bloc.dart';
-import 'package:datapage_bloc/view/product/productapi.dart';
-import 'package:datapage_bloc/view/product/productpage.dart';
+// lib/main.dart
+import 'package:datapage_bloc/api/cart_api.dart';
+import 'package:datapage_bloc/api/productapi.dart';
+import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/product_bloc/product_bloc.dart';
 
+import 'package:datapage_bloc/view/splash_screen.dart/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,13 +17,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          ProductBloc(apiService: ApiService())..add(FetchProducts()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              ProductBloc(apiService: ApiService())..add(FetchProducts()),
+        ),
+        BlocProvider(
+          create: (context) => CartBloc(apiService: CartApiService()),
+        ),
+      ],
       child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'Flutter BLoC API',
-        home: ProductPage(),
+        home: SplashScreen(),
       ),
     );
   }

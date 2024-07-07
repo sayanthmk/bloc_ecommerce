@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:datapage_bloc/view/product/productapi.dart';
-import 'package:datapage_bloc/view/product/productmodel.dart';
+import 'package:datapage_bloc/api/productapi.dart';
+import 'package:datapage_bloc/models/productmodel.dart';
 import 'package:meta/meta.dart';
 
 part 'product_event.dart';
