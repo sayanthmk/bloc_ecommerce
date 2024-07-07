@@ -23,9 +23,13 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               ProductBloc(apiService: ApiService())..add(FetchProducts()),
         ),
+        // BlocProvider(
+        //   create: (context) => CartBloc(apiService: C
+        // artApiService()),
+        // ),
         BlocProvider(
-          create: (context) => CartBloc(apiService: CartApiService()),
-        ),
+          create: (context) => CartBloc(),
+        )
       ],
       child: const MaterialApp(
         title: 'Flutter BLoC API',

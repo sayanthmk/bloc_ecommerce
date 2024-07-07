@@ -2,16 +2,20 @@ part of 'cart_bloc.dart';
 
 abstract class CartEvent {}
 
-class FetchCarts extends CartEvent {}
+class AddProduct extends CartEvent {
+  final Product product;
 
-class AddProductToCart extends CartEvent {
-  final int userId;
-  final DateTime date;
-  final List<Map<String, dynamic>> products;
+  AddProduct(this.product);
+}
 
-  AddProductToCart({
-    required this.userId,
-    required this.date,
-    required this.products,
-  });
+class IncrementQuantity extends CartEvent {
+  final Product product;
+
+  IncrementQuantity(this.product);
+}
+
+class DecrementQuantity extends CartEvent {
+  final Product product;
+
+  DecrementQuantity(this.product);
 }

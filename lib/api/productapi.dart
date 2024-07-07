@@ -57,4 +57,14 @@ class ApiService {
   //     throw Exception('Failed to add product to cart');
   //   }
   // }
+  Future<List<Product>> searchProducts(String query) async {
+    final response = await http.get(Uri.parse('$apiUrl?q=$query'));
+    if (response.statusCode == 200) {
+      return (json.decode(response.body) as List)
+          .map((data) => Product.fromJson(data))
+          .toList();
+    } else {
+      throw Exception('Failed to load products');
+    }
+  }
 }

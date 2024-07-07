@@ -1,37 +1,46 @@
 import 'package:bloc/bloc.dart';
-import 'package:datapage_bloc/api/cart_api.dart';
-import 'package:datapage_bloc/models/cartmodel.dart';
+import 'package:datapage_bloc/models/productmodel.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  final CartApiService apiService;
+  CartBloc() : super(CartInitial()) {
+    on<AddProduct>((event, emit) {
+      if (state is CartInitial) {
+        emit(CartUpdated({event.product: 1}));
+      } else if (state is CartUpdated) {
+        final currentState = state as CartUpdated;
+        final updatedProducts = Map<Product, int>.from(currentState.products);
+        if (updatedProducts.containsKey(event.product)) {
+          updatedProducts[event.product] = updatedProducts[event.product]! + 1;
+        } else {
+          updatedProducts[event.product] = 1;
+        }
+        emit(CartUpdated(updatedProducts));
+      }
+    });
 
-  CartBloc({required this.apiService}) : super(CartInitial()) {
-    on<FetchCarts>(_onFetchCarts);
-    on<AddProductToCart>(_onAddProductToCart);
-  }
+    on<IncrementQuantity>((event, emit) {
+      if (state is CartUpdated) {
+        final currentState = state as CartUpdated;
+        final updatedProducts = Map<Product, int>.from(currentState.products);
+        updatedProducts[event.product] = updatedProducts[event.product]! + 1;
+        emit(CartUpdated(updatedProducts));
+      }
+    });
 
-  void _onFetchCarts(FetchCarts event, Emitter<CartState> emit) async {
-    emit(CartLoading());
-    try {
-      final carts = await apiService.fetchCarts();
-      emit(CartLoaded(carts));
-    } catch (e) {
-      emit(CartError(e.toString()));
-    }
-  }
-
-  void _onAddProductToCart(
-      AddProductToCart event, Emitter<CartState> emit) async {
-    emit(CartLoading());
-    try {
-      final cart = await apiService.addProductToCart(
-          event.userId, event.date, event.products);
-      emit(CartProductAdded(cart));
-    } catch (e) {
-      emit(CartError(e.toString()));
-    }
+    on<DecrementQuantity>((event, emit) {
+      if (state is CartUpdated) {
+        final currentState = state as CartUpdated;
+        final updatedProducts = Map<Product, int>.from(currentState.products);
+        if (updatedProducts[event.product]! > 1) {
+          updatedProducts[event.product] = updatedProducts[event.product]! - 1;
+        } else {
+          updatedProducts.remove(event.product);
+        }
+        emit(CartUpdated(updatedProducts));
+      }
+    });
   }
 }

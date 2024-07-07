@@ -1,5 +1,7 @@
+import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/models/productmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Product product;
@@ -44,6 +46,12 @@ class ProductDetailPage extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                context.read<CartBloc>().add(AddProduct(product));
+              },
+              child: const Text('Add to Cart'),
+            ),
           ],
         ),
       ),

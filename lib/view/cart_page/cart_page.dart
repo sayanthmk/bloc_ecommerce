@@ -1,5 +1,5 @@
-import 'package:datapage_bloc/api/cart_api.dart';
 import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/view/cart_page/cartdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,43 +10,39 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart Items'),
+        title: const Text('Cart'),
       ),
-      body: BlocProvider(
-        create: (context) =>
-            CartBloc(apiService: CartApiService())..add(FetchCarts()),
-        child: CartView(),
+      body: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          if (state is CartInitial) {
+            return const Center(child: Text('Cart is empty'));
+          } else if (state is CartUpdated) {
+            return ListView.builder(
+              itemCount: state.products.length,
+              itemBuilder: (context, index) {
+                final product = state.products.keys.elementAt(index);
+                final quantity = state.products[product];
+                return ListTile(
+                  leading: Image.network(product.image, width: 50, height: 50),
+                  title: Text(product.title),
+                  subtitle: Text('\$${product.price} x $quantity'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CartProductDetailPage(product: product),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          } else {
+            return const Center(child: Text('Unknown state'));
+          }
+        },
       ),
-    );
-  }
-}
-
-class CartView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CartBloc, CartState>(
-      builder: (context, state) {
-        if (state is CartLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is CartLoaded) {
-          return ListView.builder(
-            itemCount: state.carts.length,
-            itemBuilder: (context, index) {
-              final cart = state.carts[index];
-              return ListTile(
-                title: Text('Cart ID: ${cart.id}'),
-                subtitle: Text('User ID: ${cart.userId}\nDate: ${cart.date}'),
-                onTap: () {},
-              );
-            },
-          );
-        } else if (state is CartError) {
-          return Center(
-              child: Text('Failed to load cart items: ${state.message}'));
-        } else {
-          return Container();
-        }
-      },
     );
   }
 }
