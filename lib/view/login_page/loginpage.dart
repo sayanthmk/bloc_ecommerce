@@ -1,5 +1,5 @@
-import 'package:datapage_bloc/api/loginapi.dart';
-import 'package:datapage_bloc/loginbloc/login_bloc.dart';
+import 'package:datapage_bloc/controller/api_page/api/loginapi.dart';
+import 'package:datapage_bloc/controller/blocs_page/loginbloc/login_bloc.dart';
 import 'package:datapage_bloc/view/central_page/central_page.dart';
 import 'package:datapage_bloc/view/login_page/customtext_field.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +60,6 @@ class LoginScreen extends StatelessWidget {
                             controller: _passwordController,
                             labelText: 'Enter Password',
                             // prefixIcon: const Icon(Icons.key),
-                            obscureText: true,
                           ),
                           const SizedBox(height: 30),
                           state is LoginLoading
@@ -108,69 +107,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-        // TextFormField(
-                      //   controller: _usernameController,
-                      //   decoration:
-                      //       const InputDecoration(labelText: 'Username'),
-                      // ),
-                      // TextFormField(
-                      //   controller: _passwordController,
-                      //   decoration:
-                      //       const InputDecoration(labelText: 'Password'),
-                      //   obscureText: true,
-                      // ),
-                               // ElevatedButton(
-                          //     onPressed: () {
-                          //       if (_formKey.currentState!.validate()) {
-                          //         final username = _usernameController.text;
-                          //         final password = _passwordController.text;
-                          //         BlocProvider.of<LoginBloc>(context).add(
-                          //           LoginButtonPressed(
-                          //             username: username,
-                          //             password: password,
-                          //           ),
-                          //         );
-                          //       }
-                          //     },
-                          //     child: const Text('Login'),
-                          //   ),
-
-
-
-                           // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(300.0),
-      //   child: AppBar(
-      //     flexibleSpace: Stack(
-      //       children: [
-      //         Positioned.fill(
-      //             child: Container(
-      //           decoration: const BoxDecoration(color: Colors.deepPurpleAccent),
-      //         )),
-      //         const Positioned(
-      //           bottom: 16.0,
-      //           left: 16.0,
-      //           child: Column(
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: [
-      //               Text(
-      //                 'Login',
-      //                 style: TextStyle(
-      //                   fontSize: 30.0,
-      //                   color: Colors.white,
-      //                   fontWeight: FontWeight.bold,
-      //                 ),
-      //               ),
-      //               Text(
-      //                 'Please Sign In To continue',
-      //                 style: TextStyle(
-      //                   fontSize: 15.0,
-      //                   color: Colors.white,
-      //                 ),
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),

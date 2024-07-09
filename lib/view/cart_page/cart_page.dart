@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/view/cart_page/cartdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,10 +77,6 @@ class CartPage extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                // Text(
-                                //   '${product.rating.rate} (${product.rating.count}reviews)',
-                                //   style: const TextStyle(fontSize: 12),
-                                // ),
                                 Row(
                                   children: [
                                     RatingBarIndicator(
@@ -230,3 +226,7 @@ class CartPage extends StatelessWidget {
       //               ),
       //             ),
       //           );
+            // Text(
+                                //   '${product.rating.rate} (${product.rating.count}reviews)',
+                                //   style: const TextStyle(fontSize: 12),
+                                // ),

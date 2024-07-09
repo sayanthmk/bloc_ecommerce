@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/splash_bloc/splash_bloc.dart';
+import 'package:datapage_bloc/controller/blocs_page/splash_bloc/splash_bloc.dart';
 import 'package:datapage_bloc/view/central_page/central_page.dart';
 import 'package:datapage_bloc/view/login_page/loginpage.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +17,12 @@ class SplashScreen extends StatelessWidget {
             if (state is SplashLoaded) {
               await Future.delayed(const Duration(seconds: 3));
               if (state.isLoggedIn) {
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const MainPage()),
                 );
               } else {
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => LoginScreen()),
                 );

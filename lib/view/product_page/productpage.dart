@@ -1,7 +1,7 @@
 import 'package:datapage_bloc/view/product_page/productdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:datapage_bloc/product_bloc/product_bloc.dart';
+import 'package:datapage_bloc/controller/blocs_page/product_bloc/product_bloc.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -12,17 +12,13 @@ class ProductPage extends StatelessWidget {
       appBar: AppBar(
         title: const Row(
           children: [
-            // Image.asset(
-            //   "asset/logofore-commerce.png",
-            //   height: 50,
-            //   width: 50,
-            // ),
             Text(
-              'Shopify',
+              'H&M',
               style: TextStyle(
-                  color: Colors.lightGreen,
+                  color: Colors.red,
                   fontSize: 25,
-                  fontWeight: FontWeight.w800),
+                  fontWeight: FontWeight.w800,
+                  fontStyle: FontStyle.italic),
             ),
           ],
         ),
@@ -39,7 +35,7 @@ class ProductPage extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(16.0),
-                    color: Colors.blueGrey[100],
+                    color: const Color.fromARGB(255, 112, 189, 222),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -90,12 +86,21 @@ class ProductPage extends StatelessWidget {
                           ],
                         ),
                         Column(
-                          children: [Text("add")],
+                          children: [
+                            Container(
+                              height: 150,
+                              width: 170,
+                              child: Image.asset(
+                                'asset/model3.png',
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GridView.builder(

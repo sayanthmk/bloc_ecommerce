@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/models/productmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

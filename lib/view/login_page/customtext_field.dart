@@ -6,7 +6,6 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   // final Icon prefixIcon;
   final TextInputType keyboard;
-  final bool obscureText;
 
   const CustomTextField({
     super.key,
@@ -15,7 +14,6 @@ class CustomTextField extends StatelessWidget {
     required this.labelText,
     // required this.prefixIcon,
     required this.keyboard,
-    this.obscureText = false,
   });
 
   @override
@@ -49,6 +47,7 @@ class CustomTextField extends StatelessWidget {
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
+
                   // prefixIcon: prefixIcon,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
@@ -62,7 +61,6 @@ class CustomTextField extends StatelessWidget {
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: keyboard,
-                obscureText: obscureText,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '* Required Field';

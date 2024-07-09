@@ -1,6 +1,6 @@
-import 'package:datapage_bloc/api/productapi.dart';
-import 'package:datapage_bloc/cart_bloc/cart_bloc.dart';
-import 'package:datapage_bloc/product_bloc/product_bloc.dart';
+import 'package:datapage_bloc/controller/api_page/api/productapi.dart';
+import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs_page/product_bloc/product_bloc.dart';
 import 'package:datapage_bloc/view/splash_screen.dart/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
