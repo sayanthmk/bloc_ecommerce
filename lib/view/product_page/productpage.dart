@@ -10,33 +10,103 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Products'),
+        title: const Row(
+          children: [
+            // Image.asset(
+            //   "asset/logofore-commerce.png",
+            //   height: 50,
+            //   width: 50,
+            // ),
+            Text(
+              'Shopify',
+              style: TextStyle(
+                  color: Colors.lightGreen,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w800),
+            ),
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 150,
-            width: 400,
-            color: Colors.blueGrey[300],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          BlocBuilder<ProductBloc, ProductState>(
-            builder: (context, state) {
-              if (state is ProductInitial) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is ProductLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is ProductLoaded) {
-                return Expanded(
-                  child: GridView.builder(
+      body: BlocBuilder<ProductBloc, ProductState>(
+        builder: (context, state) {
+          if (state is ProductInitial) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ProductLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ProductLoaded) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    color: Colors.blueGrey[100],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "NEW COLLECTIONS",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                            const Row(
+                              children: [
+                                Text(
+                                  "20",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                                Text(
+                                  "%OFF",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                              ],
+                            ),
+                            Container(
+                                height: 30,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: const Center(
+                                  child: Text(
+                                    "SHOP NOW",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        ),
+                        Column(
+                          children: [Text("add")],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Number of columns in the grid
+                      crossAxisCount: 2,
                       mainAxisSpacing: 8.0,
                       crossAxisSpacing: 8.0,
-                      childAspectRatio: 0.75, // Aspect ratio of grid items
+                      childAspectRatio: 0.75,
                     ),
                     itemCount: state.products.length,
                     itemBuilder: (context, index) {
@@ -52,23 +122,22 @@ class ProductPage extends StatelessWidget {
                           );
                         },
                         child: Card(
-                          elevation: 2,
+                          color: Colors.white,
+                          elevation: 4,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
+                            children: [
                               ClipRRect(
                                 borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(8)),
                                 child: Center(
-                                  child: Container(
+                                  child: SizedBox(
                                     height: 160,
-                                    width: 150,
+                                    width: 160,
                                     child: Image.network(
                                       product.image,
-                                      // height: 150,
-                                      // width: double.infinity,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -78,7 +147,7 @@ class ProductPage extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
+                                  children: [
                                     Text(
                                       product.title,
                                       maxLines: 1,
@@ -102,7 +171,7 @@ class ProductPage extends StatelessWidget {
                                             color: Colors.yellow, size: 16),
                                         const SizedBox(width: 4),
                                         Text(
-                                          '${product.rating.rate} (${product.rating.count} )',
+                                          '${product.rating.rate} (${product.rating.count})',
                                           style: const TextStyle(fontSize: 12),
                                         ),
                                       ],
@@ -116,15 +185,15 @@ class ProductPage extends StatelessWidget {
                       );
                     },
                   ),
-                );
-              } else if (state is ProductError) {
-                return Center(child: Text(state.message));
-              } else {
-                return Container();
-              }
-            },
-          ),
-        ],
+                ],
+              ),
+            );
+          } else if (state is ProductError) {
+            return Center(child: Text(state.message));
+          } else {
+            return Container();
+          }
+        },
       ),
     );
   }

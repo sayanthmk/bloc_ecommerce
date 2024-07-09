@@ -13,8 +13,9 @@ class SplashScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => SplashBloc()..add(AppStarted()),
         child: BlocListener<SplashBloc, SplashState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is SplashLoaded) {
+              await Future.delayed(const Duration(seconds: 3));
               if (state.isLoggedIn) {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const MainPage()),
@@ -27,7 +28,18 @@ class SplashScreen extends StatelessWidget {
             }
           },
           child: const Center(
-            child: CircularProgressIndicator(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset(
+                //   'asset/logoh&m.jpg',
+                //   height: 200,
+                //   width: 200,
+                // ),
+                // const SizedBox(height: 20),
+                CircularProgressIndicator(),
+              ],
+            ),
           ),
         ),
       ),

@@ -39,6 +39,7 @@ dependencies:
   http: ^1.2.1
   meta: ^1.12.0
   shared_preferences:
+  flutter_rating_bar:
 
 dev_dependencies:
   flutter_test:
