@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/controller/blocs_page/splash_bloc/splash_bloc.dart';
+import 'package:datapage_bloc/controller/blocs/splash_bloc/splash_bloc.dart';
 import 'package:datapage_bloc/view/central_page/central_page.dart';
 import 'package:datapage_bloc/view/login_page/loginpage.dart';
 import 'package:flutter/material.dart';

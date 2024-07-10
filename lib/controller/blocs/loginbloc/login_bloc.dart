@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:datapage_bloc/controller/api_page/api/loginapi.dart';
+import 'package:datapage_bloc/controller/api/api/loginapi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';

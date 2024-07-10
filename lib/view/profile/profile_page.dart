@@ -87,6 +87,7 @@ class ProfilePage extends StatelessWidget {
                               final prefs =
                                   await SharedPreferences.getInstance();
                               await prefs.setBool('isLoggedIn', false);
+                              // ignore: use_build_context_synchronously
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => LoginScreen()),
@@ -119,31 +120,6 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ));
-
-    // Stack(
-    //   children: [
-    //     Container(
-    //       decoration: const BoxDecoration(color: Colors.grey),
-    //       height: 180,
-    //       width: double.infinity,
-    //       // child: Image.asset(
-    //       //   'asset/background_ui.jpeg',
-    //       //   fit: BoxFit.fill,
-    //       // ),
-    //     ),
-    //     SizedBox(
-    //       height: double.infinity,
-    //       width: double.infinity,
-    //       child:
-    //     ),
-    //     const Positioned(
-    //         top: 90,
-    //         left: 110,
-    //         child: CircleAvatar(
-    //           radius: 80,
-    //         )),
-    //   ],
-    // ));
   }
 }
 //  child: Container(
@@ -223,3 +199,27 @@ class ProfilePage extends StatelessWidget {
 //     icon: const Icon(Icons.logout),
 //   ),
 // ],
+    // Stack(
+    //   children: [
+    //     Container(
+    //       decoration: const BoxDecoration(color: Colors.grey),
+    //       height: 180,
+    //       width: double.infinity,
+    //       // child: Image.asset(
+    //       //   'asset/background_ui.jpeg',
+    //       //   fit: BoxFit.fill,
+    //       // ),
+    //     ),
+    //     SizedBox(
+    //       height: double.infinity,
+    //       width: double.infinity,
+    //       child:
+    //     ),
+    //     const Positioned(
+    //         top: 90,
+    //         left: 110,
+    //         child: CircleAvatar(
+    //           radius: 80,
+    //         )),
+    //   ],
+    // ));

@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/models/productmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,7 +99,7 @@ class ProductDetailPage extends StatelessWidget {
                         children: [
                           Icon(Icons.shopping_bag),
                           Text(
-                            "ADD TO KART",
+                            "ADD TO CART",
                             style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.black,
@@ -139,9 +139,3 @@ class ProductDetailPage extends StatelessWidget {
     );
   }
 }
-    // ElevatedButton(
-                  //   onPressed: () {
-                  //     context.read<CartBloc>().add(AddProduct(product));
-                  //   },
-                  //   child: const Text('Add to Cart'),
-                  // ),

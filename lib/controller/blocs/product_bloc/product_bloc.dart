@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:datapage_bloc/controller/api_page/api/productapi.dart';
+import 'package:datapage_bloc/controller/api/api/productapi.dart';
 import 'package:datapage_bloc/models/productmodel.dart';
 import 'package:meta/meta.dart';
 

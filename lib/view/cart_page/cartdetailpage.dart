@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/view/cart_page/cartcustom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -159,53 +159,3 @@ class CartProductDetailPage extends StatelessWidget {
     );
   }
 }
-  //  return Column(
-  //                   crossAxisAlignment: CrossAxisAlignment.start,
-  //                   children: [
-  //                     Container(
-  //                       height: 50,
-  //                       width: 150,
-  //                       decoration: const BoxDecoration(
-  //                           color: Colors.green,
-  //                           borderRadius: BorderRadius.all(Radius.circular(5))),
-                        // child: Row(
-                        //   children: [
-                        //     IconButton(
-                        //       icon: const Icon(Icons.remove),
-                        //       onPressed: () {
-                        //         context
-                        //             .read<CartBloc>()
-                        //             .add(DecrementQuantity(product));
-                        //       },
-                        //     ),
-                        //     Container(
-                        //       width: 2,
-                        //       color: Colors.black,
-                        //     ),
-                        //     Center(child: Text('$quantity')),
-                        //     SizedBox(
-                        //       width: 40,
-                        //     ),
-                        //     Container(
-                        //       width: 2,
-                        //       color: Colors.black,
-                        //     ),
-                        //     IconButton(
-                        //       icon: const Icon(Icons.add),
-                        //       onPressed: () {
-                        //         context
-                        //             .read<CartBloc>()
-                        //             .add(IncrementQuantity(product));
-                        //       },
-                        //     ),
-                        //   ],
-                        // ),
-                      // ),
-  //                     const SizedBox(height: 8),
-  //                     Text(
-  //                       'Total: \$${totalValue.toStringAsFixed(2)}',
-  //                       style:
-  //                           const TextStyle(fontSize: 20, color: Colors.blue),
-  //                     ),
-  //                   ],
-  //                 );

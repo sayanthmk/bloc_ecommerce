@@ -1,7 +1,8 @@
+import 'package:datapage_bloc/view/product_page/adv_container.dart';
 import 'package:datapage_bloc/view/product_page/productdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:datapage_bloc/controller/blocs_page/product_bloc/product_bloc.dart';
+import 'package:datapage_bloc/controller/blocs/product_bloc/product_bloc.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -33,73 +34,7 @@ class ProductPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    color: const Color.fromARGB(255, 112, 189, 222),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "NEW COLLECTIONS",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                            const Row(
-                              children: [
-                                Text(
-                                  "20",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.w800),
-                                ),
-                                Text(
-                                  "%OFF",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800),
-                                ),
-                              ],
-                            ),
-                            Container(
-                                height: 30,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: const Center(
-                                  child: Text(
-                                    "SHOP NOW",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              height: 150,
-                              width: 170,
-                              child: Image.asset(
-                                'asset/model3.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  const AddContainer(),
                   const SizedBox(
                     height: 20,
                   ),

@@ -1,5 +1,5 @@
-import 'package:datapage_bloc/controller/api_page/api/loginapi.dart';
-import 'package:datapage_bloc/controller/blocs_page/loginbloc/login_bloc.dart';
+import 'package:datapage_bloc/controller/api/api/loginapi.dart';
+import 'package:datapage_bloc/controller/blocs/loginbloc/login_bloc.dart';
 import 'package:datapage_bloc/view/central_page/central_page.dart';
 import 'package:datapage_bloc/view/login_page/customtext_field.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,9 @@ class LoginScreen extends StatelessWidget {
     final authRepository = AuthRepository();
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
       body: BlocProvider(
         create: (context) => LoginBloc(authRepository: authRepository),
         child: BlocListener<LoginBloc, LoginState>(
@@ -49,7 +51,6 @@ class LoginScreen extends StatelessWidget {
                             keyboard: TextInputType.text,
                             controller: _usernameController,
                             labelText: 'Enter UserName',
-                            // prefixIcon: const Icon(Icons.person_2_rounded),
                           ),
                           const SizedBox(
                             height: 10,
@@ -59,7 +60,6 @@ class LoginScreen extends StatelessWidget {
                             keyboard: TextInputType.text,
                             controller: _passwordController,
                             labelText: 'Enter Password',
-                            // prefixIcon: const Icon(Icons.key),
                           ),
                           const SizedBox(height: 30),
                           state is LoginLoading

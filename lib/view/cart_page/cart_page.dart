@@ -1,4 +1,4 @@
-import 'package:datapage_bloc/controller/blocs_page/cart_bloc/cart_bloc.dart';
+import 'package:datapage_bloc/controller/blocs/cart_bloc/cart_bloc.dart';
 import 'package:datapage_bloc/view/cart_page/cartdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -172,61 +172,3 @@ class CartPage extends StatelessWidget {
     );
   }
 }
-      // return Padding(
-      //             padding: const EdgeInsets.all(8.0),
-      //             child: Container(
-      //               height: 150,
-      //               width: 300,
-      //               decoration: const BoxDecoration(color: Colors.green),
-      //               child: ListTile(
-      //                 leading: Image.network(
-      //                   product.image,
-      //                   width: 100,
-      //                   height: 150,
-      //                   fit: BoxFit.fill,
-      //                 ),
-      //                 title: Column(
-      //                   crossAxisAlignment: CrossAxisAlignment.start,
-      //                   children: [
-      //                     Text(product.title),
-      //                     const SizedBox(
-      //                       height: 10,
-      //                     ),
-      //                     Text(
-      //                       '${product.rating.rate} (${product.rating.count}reviews)',
-      //                       style: const TextStyle(fontSize: 12),
-      //                     ),
-      //                     Container(
-      //                         height: 40,
-      //                         width: 80,
-      //                         decoration: BoxDecoration(border: Border.all()),
-      //                         child: Padding(
-      //                           padding: const EdgeInsets.all(8.0),
-      //                           child: Row(
-      //                             mainAxisAlignment: MainAxisAlignment.center,
-      //                             children: [
-      //                               const Text("Qty:"),
-      //                               Text('$quantity'),
-      //                             ],
-      //                           ),
-      //                         )),
-      //                     Text('${product.price}')
-      //                   ],
-      //                 ),
-      //                 // subtitle:
-      //                 onTap: () {
-      //                   Navigator.push(
-      //                     context,
-      //                     MaterialPageRoute(
-      //                       builder: (context) =>
-      //                           CartProductDetailPage(product: product),
-      //                     ),
-      //                   );
-      //                 },
-      //               ),
-      //             ),
-      //           );
-            // Text(
-                                //   '${product.rating.rate} (${product.rating.count}reviews)',
-                                //   style: const TextStyle(fontSize: 12),
-                                // ),

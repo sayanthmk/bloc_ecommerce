@@ -4,7 +4,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String heading;
   final String labelText;
-  // final Icon prefixIcon;
+
   final TextInputType keyboard;
 
   const CustomTextField({
@@ -12,7 +12,6 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.heading,
     required this.labelText,
-    // required this.prefixIcon,
     required this.keyboard,
   });
 
@@ -47,8 +46,6 @@ class CustomTextField extends StatelessWidget {
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-
-                  // prefixIcon: prefixIcon,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
                     borderSide: BorderSide.none,
@@ -57,7 +54,6 @@ class CustomTextField extends StatelessWidget {
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 20.0, horizontal: 10),
-                  // contentPadding: const EdgeInsets.all(5),
                 ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: keyboard,
